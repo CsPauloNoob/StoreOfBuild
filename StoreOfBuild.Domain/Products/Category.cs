@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StoreOfBuild.Domain.Products
 {
-    internal class Category
+    public class Category
     {
 
         public int Id { get; private set; }

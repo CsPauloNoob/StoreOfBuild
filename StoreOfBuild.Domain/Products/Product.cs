@@ -2,7 +2,7 @@
 
 namespace StoreOfBuild.Domain.Products
 {
-    internal class Product
+    public class Product
     {
         public int Id { get; private set; }
 
@@ -17,17 +17,17 @@ namespace StoreOfBuild.Domain.Products
         public int StorckQuantity { get; private set; }
 
 
-        public Product(int id, string name, Category category, decimal price, int stockqtty)
+        public Product(string name, Category category, decimal price, int stockqtty)
         {
             Validate(name, category, price, stockqtty);
-            SetProperties(id, name, category, price, stockqtty);
+            SetProperties(name, category, price, stockqtty);
         }
 
 
-        public void Update(int id, string name, Category category, decimal price, int stockqtty)
+        public void Update(string name, Category category, decimal price, int stockqtty)
         {
             Validate(name, category, price, stockqtty);
-            SetProperties(id, name, category, price, stockqtty);
+            SetProperties(name, category, price, stockqtty);
         }
 
 
@@ -42,9 +42,8 @@ namespace StoreOfBuild.Domain.Products
         }
 
 
-        private void SetProperties(int id, string name, Category category, decimal price, int stockqtty)
+        private void SetProperties(string name, Category category, decimal price, int stockqtty)
         {
-            Id = id;
             Name = name;
             Category = category;
             Price = price;
