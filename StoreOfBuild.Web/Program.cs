@@ -1,7 +1,14 @@
+using StoreOfBuild.DI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
 builder.Services.AddControllersWithViews();
+
+BootStrap.Configure(builder.Services);
+builder.Services.AddMvc();
 
 var app = builder.Build();
 

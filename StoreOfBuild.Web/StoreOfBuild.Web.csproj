@@ -16,4 +16,8 @@
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StoreOfBuild.DI\StoreOfBuild.DI.csproj" />
+  </ItemGroup>
+
 </Project>
