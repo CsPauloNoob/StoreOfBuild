@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace StoreOfBuild.Domain.Products
 {
+    //classe de servico
     public class CategoryStore
     {
-        private readonly IRepository<Category> _categoryRepository;
+        private readonly IRepository<Category> _categoryRepository; //repositorio 
 
 
         public CategoryStore(IRepository<Category> categoryRepository)

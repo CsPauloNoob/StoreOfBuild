@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace StoreOfBuild.Domain
 {
-    public interface IRepository<T>
+    public class Entity
     {
-        T GetById(int id);
-
-        void Save(T entity);
+        public int Id { get; protected set; }
     }
 }

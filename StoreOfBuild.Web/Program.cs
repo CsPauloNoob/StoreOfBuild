@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-BootStrap.Configure(builder.Services);
+BootStrap.Configure(builder.Services,
+    builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddMvc();
 
 var app = builder.Build();
