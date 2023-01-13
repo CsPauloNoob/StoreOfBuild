@@ -1,3 +1,4 @@
+using StoreOfBuild.Data;
 using StoreOfBuild.DI;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,14 @@ builder.Services.AddMvc();
 
 var app = builder.Build();
 
+app.Use(async (context, next) =>
+{
+    //Request
+    await next.Invoke();
+
+    var unityOfWork = (UnityOfWork)context.RequestServices.GetService(typeof(UnityOfWork));
+    await unityOfWork.Save();
+});
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

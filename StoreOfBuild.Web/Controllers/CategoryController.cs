@@ -21,7 +21,7 @@ namespace StoreOfBuild.Web.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public IActionResult CreateOrEdit()
         {
             return View();
@@ -29,9 +29,9 @@ namespace StoreOfBuild.Web.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateOrEdit(CategoryDto dto)
+        public IActionResult CreateOrEdit([FromForm]CategoryDto dto)
         {
-
+            _categoryStore.Store(dto);
             return View();
         }
     }

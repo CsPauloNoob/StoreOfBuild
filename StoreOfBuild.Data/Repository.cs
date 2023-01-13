@@ -22,16 +22,13 @@ namespace StoreOfBuild.Data
         {
             var entity = _context.Set<T>().SingleOrDefault(x => x.Id == id);
 
-            if (entity == null)
-                throw new NullReferenceException();
-            else
-                return entity;
+            return entity;
         }
 
         public void Save(T entity)
         {
+            //Salva todos os tipos de alterações/Adções no contexto
             _context.Set<T>().Add(entity);
-            _context.SaveChangesAsync();
         }
     }
 }
