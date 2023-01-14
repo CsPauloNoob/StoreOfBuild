@@ -1,5 +1,4 @@
-﻿using StoreOfBuild.Domain.Dtos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +18,9 @@ namespace StoreOfBuild.Domain.Products
         }
 
 
-        public void Store(ProductDto productDto)
+        public void Store(string productDto)
         {
-            var category = _categoryRepository.GetById(productDto.CategoryId);
+            /*var category = _categoryRepository.GetById(productDto.CategoryId);
             DomainException.When(category == null, "Categoria não existe");
 
             var product = _productRepository.GetById(productDto.Id);
@@ -32,7 +31,7 @@ namespace StoreOfBuild.Domain.Products
             }
 
             else
-                product.Update(productDto.Name, category, product.Price, productDto.StorckQuantity);
+                product.Update(productDto.Name, category, product.Price, productDto.StorckQuantity);*/
         }
 
     }

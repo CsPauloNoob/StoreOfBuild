@@ -1,4 +1,4 @@
-﻿@model StoreOfBuild.Domain.Dtos.CategoryDto
+﻿@model StoreOfBuild.Web.ViewModel.CategoryViewModel
 @{
     ViewData["Title"] = "Categoria";
 }
@@ -16,6 +16,7 @@
                 <label class="col-md-2 control-label" for="">Nome</label>
                 <div>
                     <input class="form-control" asp-for="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
             <div class=" form-group">
@@ -26,3 +27,9 @@
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+
+}

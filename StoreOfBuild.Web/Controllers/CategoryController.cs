@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StoreOfBuild.Domain;
-using StoreOfBuild.Domain.Dtos;
 using StoreOfBuild.Domain.Products;
+using StoreOfBuild.Web.ViewModel;
 
 namespace StoreOfBuild.Web.Controllers
 {
@@ -9,11 +8,11 @@ namespace StoreOfBuild.Web.Controllers
     public class CategoryController : Controller
     {
 
-        private readonly CategoryStore _categoryStore; 
+        private readonly CategoryStore _categoryStore;
 
         public CategoryController(CategoryStore categoryStore)
         {
-            _categoryStore = categoryStore; 
+            _categoryStore = categoryStore;
         }
 
         public IActionResult Index()
@@ -29,9 +28,9 @@ namespace StoreOfBuild.Web.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateOrEdit([FromForm]CategoryDto dto)
+        public IActionResult CreateOrEdit(CategoryViewModel viewModel)
         {
-            _categoryStore.Store(dto);
+            _categoryStore.Store(viewModel.Name, viewModel.Id);
             return View();
         }
     }

@@ -1,5 +1,4 @@
-﻿using StoreOfBuild.Domain.Dtos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +18,13 @@ namespace StoreOfBuild.Domain.Products
         }
 
 
-        public void Store(CategoryDto categoryDto)
+        public void Store(string name, int id)
         {
-            var category = _categoryRepository.GetById(categoryDto.Id);
+            var category = _categoryRepository.GetById(id);
 
             if(category == null)
             {
-                category = new Category(categoryDto.Name);
+                category = new Category(name);
                 _categoryRepository.Save(category);
             }
         }
