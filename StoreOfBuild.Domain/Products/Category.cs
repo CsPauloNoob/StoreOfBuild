@@ -24,7 +24,7 @@ namespace StoreOfBuild.Domain.Products
 
         private void ValidateAndSetName(string name)
         {
-            DomainException.When(!string.IsNullOrEmpty(name), "Nome é obrigatório");
+            DomainException.When(!string.IsNullOrEmpty(name) && (name.Length > 3), "Nome é obrigatório");
             Name = name;
         }
     }

@@ -1,5 +1,6 @@
 using StoreOfBuild.Data;
 using StoreOfBuild.DI;
+using StoreOfBuild.Web.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,10 @@ builder.Services.AddControllersWithViews();
 
 BootStrap.Configure(builder.Services,
     builder.Configuration.GetConnectionString("DefaultConnection"));
-builder.Services.AddMvc();
+builder.Services.AddMvc( config =>
+{
+    config.Filters.Add(typeof(CustomExceptionFilter));
+});
 
 var app = builder.Build();
 
