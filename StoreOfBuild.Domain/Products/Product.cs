@@ -14,7 +14,7 @@ namespace StoreOfBuild.Domain.Products
 
         public decimal Price { get; private set; }
 
-        public int StorckQuantity { get; private set; }
+        public int StockQuantity { get; private set; }
 
 
         public Product(string name, Category category, decimal price, int stockqtty)
@@ -47,7 +47,7 @@ namespace StoreOfBuild.Domain.Products
             Name = name;
             Category = category;
             Price = price;
-            StorckQuantity = stockqtty;
+            StockQuantity = stockqtty;
         }
     }
 }

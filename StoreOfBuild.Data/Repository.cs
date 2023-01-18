@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace StoreOfBuild.Data
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public class IRepository<T> : Domain.IRepository<T> where T : Entity
     {
         private readonly ApplicationDbContext _context;
 
-        public Repository(ApplicationDbContext ctx)
+        public IRepository(ApplicationDbContext ctx)
         {
             _context = ctx;
         }
@@ -28,6 +28,11 @@ namespace StoreOfBuild.Data
         {
             //Salva todos os tipos de alterações/Adções no contexto
             _context.Set<T>().Add(entity);
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return _context.Set<T>().AsEnumerable();
         }
     }
 }

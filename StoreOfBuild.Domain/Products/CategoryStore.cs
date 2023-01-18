@@ -27,6 +27,8 @@ namespace StoreOfBuild.Domain.Products
                 category = new Category(name);
                 _categoryRepository.Save(category);
             }
+            else
+                category.Update(name);
         }
     }
 }

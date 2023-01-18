@@ -15,7 +15,7 @@ public class BootStrap
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite(connectionStr));
 
-        services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+        services.AddTransient(typeof(Domain.IRepository<>), typeof(Data.IRepository<>));
         services.AddTransient(typeof(CategoryStore));
         services.AddTransient(typeof(UnityOfWork));
     }

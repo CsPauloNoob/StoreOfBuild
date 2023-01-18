@@ -11,5 +11,7 @@ namespace StoreOfBuild.Domain
         T GetById(int id);
 
         void Save(T entity);
+
+        IEnumerable<T> GetAll();
     }
 }
