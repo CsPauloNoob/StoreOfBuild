@@ -2,25 +2,22 @@
 
 namespace StoreOfBuild.Domain.Products
 {
-    public class Product
+    public class Product : Entity
     {
-        public int Id { get; private set; }
-
         public string Name { get; private set; }
-
-        public int CategoryId { get; private set; }
 
         public Category Category { get; private set; }
 
         public decimal Price { get; private set; }
-
+        
         public int StockQuantity { get; private set; }
 
+        private Product() { }
 
-        public Product(string name, Category category, decimal price, int stockqtty)
+        public Product(string name, Category category, decimal price, int stockQuantity)
         {
-            Validate(name, category, price, stockqtty);
-            SetProperties(name, category, price, stockqtty);
+            Validate(name, category, price, stockQuantity);
+            SetProperties(name, category, price, stockQuantity);
         }
 
 
@@ -35,10 +32,10 @@ namespace StoreOfBuild.Domain.Products
 
         private void Validate(string name, Category category, decimal price, int stockqtty)
         {
-            DomainException.When(string.IsNullOrEmpty(name), "Nome é obrigatório");
-            DomainException.When(category == null, "Categoria é obrigatório");
-            DomainException.When(price < 0, "preço é obrigatório");
-            DomainException.When(stockqtty < 0, "quantidade em estoque é obrigatório");
+            DomainException.When(!string.IsNullOrEmpty(name), "Nome é obrigatório");
+            DomainException.When(!(category == null), "Categoria é obrigatório");
+            DomainException.When(!(price < 0), "preço é obrigatório");
+            DomainException.When(!(stockqtty < 0), "quantidade em estoque é obrigatório");
         }
 
 

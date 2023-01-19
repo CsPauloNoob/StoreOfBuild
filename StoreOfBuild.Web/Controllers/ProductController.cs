@@ -11,14 +11,14 @@ using StoreOfBuild.Web.ViewsModels;
 
 namespace StoreOfBuild.Web.Controllers
 {
-    [Authorize(Roles = "Admin, Manager")]
+    //[Authorize(Roles = "Admin, Manager")]
     public class ProductController : Controller
     {
-        private readonly ProductStorer _productStorer;
+        private readonly ProductStore _productStorer;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<Category> _categoryRepository;
 
-        public ProductController(ProductStorer productStorer,
+        public ProductController(ProductStore productStorer,
             IRepository<Category> categoryRepository,
             IRepository<Product> productRepository)
         {
@@ -29,7 +29,7 @@ namespace StoreOfBuild.Web.Controllers
 
         public IActionResult Index()
         {
-            var products = _productRepository.All();
+            var products = _productRepository.GetAll();
             if (products.Any())
             {
                 var viewsModels = products.Select(p => new ProductViewModel { Id = p.Id, Name = p.Name, CategoryName = p.Category.Name });
@@ -41,7 +41,7 @@ namespace StoreOfBuild.Web.Controllers
         public IActionResult CreateOrEdit(int id)
         {
             var viewModel = new ProductViewModel();
-            var categories = _categoryRepository.All();
+            var categories = _categoryRepository.GetAll();
             viewModel.Categories = categories.Any()
                 ? categories.Select(c => new CategoryViewModel { Id = c.Id, Name = c.Name })
                 : new List<CategoryViewModel>();

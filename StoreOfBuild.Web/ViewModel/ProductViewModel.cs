@@ -7,15 +7,16 @@ namespace StoreOfBuild.Web.ViewsModels
     public class ProductViewModel
     {
         public int Id { get; set; }
-        [Required]
 
+        [Required]
         public string Name { get; set; }
-        [Required]
 
+        [Required]
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        [Required]
 
+        public string CategoryName { get; set; }
+
+        [Required]
         public decimal Price { get; set; }
 
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "StockQuantity invalid")]

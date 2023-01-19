@@ -1,5 +1,6 @@
 using StoreOfBuild.Data;
 using StoreOfBuild.DI;
+using StoreOfBuild.Domain;
 using StoreOfBuild.Web.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +24,7 @@ app.Use(async (context, next) =>
     //Request
     await next.Invoke();
 
-    var unityOfWork = (UnityOfWork)context.RequestServices.GetService(typeof(UnityOfWork));
+    var unityOfWork = (UnityOfWork)context.RequestServices.GetService(typeof(IUnityOfWork));
     await unityOfWork.Save();
 });
 // Configure the HTTP request pipeline.

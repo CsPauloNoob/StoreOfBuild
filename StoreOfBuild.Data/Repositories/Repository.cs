@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StoreOfBuild.Data
+namespace StoreOfBuild.Data.Repositories
 {
-    public class IRepository<T> : Domain.IRepository<T> where T : Entity
+    public class Repository<T> : Domain.IRepository<T> where T : Entity
     {
-        private readonly ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;
 
-        public IRepository(ApplicationDbContext ctx)
+        public Repository(ApplicationDbContext ctx)
         {
             _context = ctx;
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             var entity = _context.Set<T>().SingleOrDefault(x => x.Id == id);
 
@@ -30,7 +30,7 @@ namespace StoreOfBuild.Data
             _context.Set<T>().Add(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _context.Set<T>().AsEnumerable();
         }

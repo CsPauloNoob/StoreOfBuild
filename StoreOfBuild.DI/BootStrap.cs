@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using StoreOfBuild.Domain;
 using StoreOfBuild.Domain.Products;
+using StoreOfBuild.Data.Repositories;
 
 namespace StoreOfBuild.DI;
 
@@ -15,8 +16,11 @@ public class BootStrap
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite(connectionStr));
 
-        services.AddTransient(typeof(Domain.IRepository<>), typeof(Data.IRepository<>));
+        services.AddTransient(typeof(IRepository<Product>), typeof(ProductRepository));
+        services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
         services.AddTransient(typeof(CategoryStore));
-        services.AddTransient(typeof(UnityOfWork));
+        services.AddTransient(typeof(ProductStore));
+        services.AddScoped(typeof(IUnityOfWork), typeof(UnityOfWork));
+
     }
 }
