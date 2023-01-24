@@ -32,10 +32,17 @@ namespace StoreOfBuild.Domain.Products
 
         private void Validate(string name, Category category, decimal price, int stockqtty)
         {
-            DomainException.When(!string.IsNullOrEmpty(name), "Nome é obrigatório");
-            DomainException.When(!(category == null), "Categoria é obrigatório");
-            DomainException.When(!(price < 0), "preço é obrigatório");
-            DomainException.When(!(stockqtty < 0), "quantidade em estoque é obrigatório");
+            DomainException.When(string.IsNullOrEmpty(name), "Nome é obrigatório");
+            DomainException.When((category == null), "Categoria é obrigatório");
+            DomainException.When((price < 0), "preço é obrigatório");
+            DomainException.When((stockqtty < 0), "quantidade em estoque é obrigatório");
+        }
+
+
+        public void RemoveFromStock(int quantity)
+        {
+            DomainException.When((StockQuantity - quantity) < 0, "Quantidade invalidada");
+            StockQuantity -= quantity;
         }
 
 

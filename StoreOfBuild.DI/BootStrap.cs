@@ -6,6 +6,7 @@ using System;
 using StoreOfBuild.Domain;
 using StoreOfBuild.Domain.Products;
 using StoreOfBuild.Data.Repositories;
+using StoreOfBuild.Domain.Sale;
 
 namespace StoreOfBuild.DI;
 
@@ -20,6 +21,7 @@ public class BootStrap
         services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
         services.AddTransient(typeof(CategoryStore));
         services.AddTransient(typeof(ProductStore));
+        services.AddTransient(typeof(SaleFactory));
         services.AddScoped(typeof(IUnityOfWork), typeof(UnityOfWork));
 
     }

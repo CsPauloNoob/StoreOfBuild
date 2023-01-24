@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using StoreOfBuild.Domain;
 using StoreOfBuild.Domain.Products;
 using StoreOfBuild.Web.ViewModel;
-using StoreOfBuild.Web.ViewsModels;
 
 namespace StoreOfBuild.Web.Controllers
 {

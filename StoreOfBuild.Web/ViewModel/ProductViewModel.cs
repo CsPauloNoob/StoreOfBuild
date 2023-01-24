@@ -1,8 +1,7 @@
-﻿using StoreOfBuild.Web.ViewModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StoreOfBuild.Web.ViewsModels
+namespace StoreOfBuild.Web.ViewModel
 {
     public class ProductViewModel
     {
