@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StoreOfBuild.Domain;
 using StoreOfBuild.Domain.Products;
 using StoreOfBuild.Web.ViewModel;
@@ -6,6 +7,7 @@ using StoreOfBuild.Web.ViewModel;
 namespace StoreOfBuild.Web.Controllers
 {
     //classe de aplicação
+    [Authorize]
     public class CategoryController : Controller
     {
 

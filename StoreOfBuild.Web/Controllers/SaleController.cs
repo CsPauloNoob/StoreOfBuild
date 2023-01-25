@@ -3,9 +3,11 @@ using StoreOfBuild.Domain.Products;
 using StoreOfBuild.Domain.Sale;
 using StoreOfBuild.Domain;
 using StoreOfBuild.Web.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StoreOfBuild.Web.Controllers
 {
+    [Authorize]
     public class SaleController : Controller
     {
         private readonly SaleFactory _saleFactory;
