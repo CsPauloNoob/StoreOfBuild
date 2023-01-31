@@ -2,6 +2,7 @@ using StoreOfBuild.Data;
 using StoreOfBuild.DI;
 using StoreOfBuild.Domain;
 using StoreOfBuild.Web.Filter;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 

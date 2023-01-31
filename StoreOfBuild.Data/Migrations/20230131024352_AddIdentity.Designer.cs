@@ -11,8 +11,8 @@ using StoreOfBuild.Data;
 namespace StoreOfBuild.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230125025628_AddIdentityTable")]
-    partial class AddIdentityTable
+    [Migration("20230131024352_AddIdentity")]
+    partial class AddIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

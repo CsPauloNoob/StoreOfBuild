@@ -27,6 +27,7 @@ public class BootStrap
             config.Password.RequireNonAlphanumeric = false;
             config.Password.RequireLowercase = false;
             config.Password.RequireUppercase = false;
+            config.User.RequireUniqueEmail = true;
         })
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();

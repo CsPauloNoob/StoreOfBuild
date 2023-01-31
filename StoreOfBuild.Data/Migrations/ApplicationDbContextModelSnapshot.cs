@@ -221,7 +221,7 @@ namespace StoreOfBuild.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("StoreOfBuild.Domain.Products.Product", b =>
@@ -247,7 +247,7 @@ namespace StoreOfBuild.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("StoreOfBuild.Domain.Sale.Sale", b =>
@@ -273,7 +273,7 @@ namespace StoreOfBuild.Data.Migrations
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sales", (string)null);
                 });
 
             modelBuilder.Entity("StoreOfBuild.Domain.Sale.SaleItem", b =>
@@ -298,7 +298,7 @@ namespace StoreOfBuild.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("SaleItem");
+                    b.ToTable("SaleItem", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

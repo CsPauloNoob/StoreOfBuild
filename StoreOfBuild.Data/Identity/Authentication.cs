@@ -20,9 +20,22 @@ namespace StoreOfBuild.Data.Identity
 
         public async Task<bool> Authenticate(string email, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(email, password, false, lockoutOnFailure: false);
+            try
+            {
+                var result = await _signInManager.PasswordSignInAsync(email, password, false, lockoutOnFailure: false);
 
-            return result.Succeeded;
+                if (result.RequiresTwoFactor)
+                {
+                    return true;
+                }
+
+                return result.Succeeded;
+            }
+
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
