@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StoreOfBuild.Data.Identity;
 using StoreOfBuild.Domain.Account;
 using StoreOfBuild.Web.ViewModel;
@@ -27,7 +28,7 @@ namespace StoreOfBuild.Web.Controllers
         {
             var result = await _authentication.Authenticate(model.Email, model.Password);
             if (result)
-                return Redirect("/");
+                return RedirectToAction("Index", "Home");
             else
             {
                 ModelState.AddModelError(string.Empty, "Credenciais Incorretas");

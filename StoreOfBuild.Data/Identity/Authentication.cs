@@ -24,11 +24,6 @@ namespace StoreOfBuild.Data.Identity
             {
                 var result = await _signInManager.PasswordSignInAsync(email, password, false, lockoutOnFailure: false);
 
-                if (result.RequiresTwoFactor)
-                {
-                    return true;
-                }
-
                 return result.Succeeded;
             }
 

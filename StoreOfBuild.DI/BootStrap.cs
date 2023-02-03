@@ -10,6 +10,8 @@ using StoreOfBuild.Domain.Sale;
 using StoreOfBuild.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using StoreOfBuild.Domain.Account;
+using System.Net;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace StoreOfBuild.DI;
 
@@ -32,10 +34,14 @@ public class BootStrap
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
-        services.ConfigureApplicationCookie(config => config.LoginPath = "/Account/Login");
+        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                    .AddCookie();
+        //services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Account/Login");
+        //services.ConfigureApplicationCookie(config => config.LoginPath = "/Account/Login");
 
         services.AddTransient(typeof(IRepository<Product>), typeof(ProductRepository));
         services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+        services.AddTransient(typeof(IManager), typeof(Manager));
         services.AddTransient(typeof(CategoryStore));
         services.AddTransient(typeof(ProductStore));
         services.AddTransient(typeof(SaleFactory));

@@ -10,7 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
-
 BootStrap.Configure(builder.Services,
     builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddMvc( config =>
@@ -41,6 +40,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

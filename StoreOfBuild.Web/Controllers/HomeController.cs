@@ -20,6 +20,7 @@ namespace StoreOfBuild.Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
