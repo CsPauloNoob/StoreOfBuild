@@ -32,5 +32,11 @@ namespace StoreOfBuild.Data.Identity
                 return false;
             }
         }
+
+
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

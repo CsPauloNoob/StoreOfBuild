@@ -28,16 +28,25 @@ namespace StoreOfBuild.Data.Identity
 
         public async Task<bool> CreateAsync(string email, string password, string role)
         {
-            var user = new ApplicationUser { UserName = email, Email = email };
-            var result = await _userManager.CreateAsync(user, password);
-
-            if (result.Succeeded)
+            try
             {
-                await _userManager.AddToRoleAsync(user, role);
-                return true;
+                var user = new ApplicationUser { UserName = email, Email = email };
+                var result = await _userManager.CreateAsync(user, password);
+                var roles = await _userManager.GetRolesAsync(user);
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, role);
+                    return true;
+                }
+
+                return false;
             }
 
-            return false;
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
 
         public List<IUser> ListAll()

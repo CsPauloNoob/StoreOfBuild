@@ -7,7 +7,7 @@ using StoreOfBuild.Web.ViewModel;
 namespace StoreOfBuild.Web.Controllers
 {
     //classe de aplicação
-    [Authorize]
+    [Authorize(Roles = "Admin, Manager")]
     public class CategoryController : Controller
     {
 

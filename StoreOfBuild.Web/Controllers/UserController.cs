@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StoreOfBuild.Domain.Account;
 using StoreOfBuild.Web.ViewModel;
 
 namespace StoreOfBuild.Web.Controllers
 {
+    [Authorize(Roles = "Admin, Manager")]
     public class UserController : Controller
     {
         private readonly IManager _manager;
